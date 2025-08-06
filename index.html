@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>腎・尿路結石 セルフチェック</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      background: #f7f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background: #fff;
+      max-width: 720px;
+      margin: 3em auto 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 2.2em 2.2em 1.2em 2.2em;
+    }
+    h1 {
+      font-size: 1.45em;
+      color: #205a6a;
+      margin-bottom: 1em;
+      text-align: center;
+      letter-spacing: 0.05em;
+      font-weight: bold;
+    }
+    .intro {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 2em;
+      text-align: left;
+    }
+    .question {
+      margin: 1.65em 0;
+    }
+    .question label {
+    display: flex;
+    align-items: center;  /* ← ここを「center」に戻すのがコツ！ */
+    }
+    .question input[type="checkbox"] {
+    flex: 0 0 1.7em;
+    margin: 0 1em 0 0;   /* 上下左右しっかり0に */
+    accent-color: #30b2c7;
+    transform: scale(1.22);
+    }
+    .question span {
+    flex: 1 1 auto;
+    font-size: 1.16em;
+    font-weight: bold;
+    color: #242e34;
+    line-height: 1.6;      /* 標準的な行間 */
+    display: inline-block;
+    }
+
+    .long-question label {
+        align-items: baseline !important; /* ← 上端で揃える */
+    }
+    .long-question input[type="checkbox"] {
+        margin-top: 0 !important;   /* ← 完全に上端にくっつける */
+        margin-bottom: 0;
+    }
+    .hospital-name {
+        text-align: center;
+        color: #6a7a86;
+        font-size: 1.1em;
+        margin-top: 1.4em;
+        margin-bottom: 0.3em;
+        letter-spacing: 0.06em;
+        font-weight: bold;
+    }
+
+
+    .btns {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 2.5em;
+    }
+    button {
+      padding: 0.78em 2.2em;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 1.7em;
+      background: #30b2c7;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(48,178,199,0.10);
+      transition: background 0.2s;
+      letter-spacing: 0.06em;
+    }
+    button:hover {
+      background: #2192a6;
+    }
+    .reset-btn {
+      background: #ececec;
+      color: #444;
+    }
+    .reset-btn:hover {
+      background: #d2d2d2;
+      color: #1d1d1d;
+    }
+    .note {
+      color: #8fa9b8;
+      font-size: 0.96em;
+      margin-top: 1.5em;
+      text-align: center;
+    }
+    @media (max-width: 800px) {
+      .container {
+        max-width: 97vw;
+        padding: 1em 0.5em 1em 0.5em;
+      }
+      .question span {
+        font-size: 1.02em;
+      }
+      button, .reset-btn {
+        font-size: 1em;
+        padding: 0.62em 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>腎・尿路結石 セルフチェック</h1>
+    <div class="intro">
+      尿路とよばれる腎臓から尿道までの尿の通り道にできる結石のことをいいます。<br>
+      簡易的な質問にお答えいただくと、病院に受診した方が良いかの目安に役立ちます。
+    </div>
+    <form id="selfcheck" onsubmit="event.preventDefault();">
+      <div class="question">
+        <label>
+          <input type="checkbox" name="q" value="1">
+          <span>健康診断または人間ドックで、「水腎症の疑いがある」と言われた</span>
+        </label>
+      </div>
+      <div class="question">
+        <label>
+          <input type="checkbox" name="q" value="1">
+          <span>健康診断または人間ドックで、「腎機能障害がある」と言われた</span>
+        </label>
+      </div>
+      <div class="question">
+        <label>
+          <input type="checkbox" name="q" value="1">
+          <span>健康診断または人間ドックで、「1cm以上の腎結石がある」と言われた</span>
+        </label>
+      </div>
+      <div class="question long-question">
+        <label>
+          <input type="checkbox" name="q" value="1">
+          <span>以前尿路結石を指摘され、現在は痛みなどの症状は無いが、排石を確認していない</span>
+        </label>
+      </div>
+      <div class="question long-question">
+      <label>
+        <input type="checkbox" name="q" value="1">
+        <span>以前尿路結石を指摘され、治療が終了したか経過観察となったが、5年以上超音波検査やCT検査などの画像検査を受けていない</span>
+      </label>
+      </div>
+      <div class="question">
+        <label>
+          <input type="checkbox" name="q" value="1">
+          <span>大きな尿路結石があり治療困難のため経過観察の方針となっている</span>
+        </label>
+      </div>
+      <div class="btns">
+        <button type="button" onclick="judge()">判定する</button>
+        <button type="button" class="reset-btn" onclick="resetForm()">やり直し</button>
+      </div>
+    </form>
+    <div class="note">
+      ※該当するものがあればチェックを入れてください。<br>
+      判定ボタンを押すと結果ページに移動します。
+    </div>
+    <footer class="hospital-name">
+      明理会東京大和病院
+    </footer>
+
+  </div>
+  <script>
+    function judge() {
+      const checked = document.querySelectorAll('input[name="q"]:checked').length;
+      // チェック数をresult.htmlにパラメータで渡して遷移
+      window.location.href = `result.html?score=${checked}`;
+    }
+    function resetForm() {
+      document.querySelectorAll('input[name="q"]').forEach(e => { e.checked = false; });
+    }
+  </script>
+</body>
+</html>
