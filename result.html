@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>セルフチェック結果 | 腎・尿路結石</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      background: #f7f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background: #fff;
+      max-width: 480px;
+      margin: 4em auto 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 14px;
+      padding: 2em 2em 1em 2em;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.35em;
+      color: #30b2c7;
+      margin-bottom: 1.4em;
+    }
+    .result {
+      font-size: 1.17em;
+      margin-top: 1em;
+      color: #205a6a;
+      min-height: 2.5em;
+    }
+    .btn-back {
+      margin-top: 2.5em;
+      background: #ececec;
+      color: #444;
+      border-radius: 1.5em;
+      border: none;
+      padding: 0.7em 2em;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-back:hover {
+      background: #d2d2d2;
+    }
+    .desc {
+      font-size: 0.97em;
+      color: #555;
+      margin-top: 2em;
+      margin-bottom: 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>セルフチェック結果</h1>
+    <div class="result" id="result"></div>
+    <button class="btn-back" onclick="window.location.href='index.html'">もう一度チェックする</button>
+    <div class="desc">
+      ※このチェックはあくまで目安です。<br>
+      気になる症状が続く場合は、必ず医療機関へご相談ください。
+    </div>
+  </div>
+  <script>
+    // URLからscoreを取得
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+    const score = parseInt(getParam('score') || '0', 10);
+
+    let message = '';
+    if(score === 0) {
+      message = '今のところ大きな問題はなさそうです。気になる症状があればご相談ください。';
+    } else {
+      message = '1個でも当てはまる方は要注意です。一度病院に受診してみてもいいかもしれません。';
+    }
+
+    document.getElementById('result').textContent = message;
+  </script>
+</body>
+</html>
