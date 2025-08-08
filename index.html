@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>健康セルフチェック | 明理会東京大和病院</title>
+  <style>
+    :root{
+      --brand:#30b2c7;
+      --ink:#1f2a33;
+      --muted:#6a7a86;
+      --bg:#f7f9fa;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:'Segoe UI','Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
+      background:var(--bg); margin:0; color:var(--ink);
+    }
+    .wrap{
+      max-width:960px; margin:2.2rem auto; padding:0 1rem;
+    }
+    header{
+      text-align:center; margin-bottom:1.2rem;
+    }
+    header h1{
+      font-size:1.3rem; margin:.2rem 0 .4rem; color:#205a6a;
+      letter-spacing:.03em;
+    }
+    header p{
+      color:#445; font-size:.98rem; margin:0; line-height:1.6;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:1rem; margin-top:1.2rem;
+    }
+    @media (max-width:900px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width:600px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background:var(--card); border-radius:16px; padding:1rem;
+      box-shadow:0 4px 18px rgba(0,0,0,.08);
+      display:flex; flex-direction:column; gap:.6rem;
+    }
+    .card h2{
+      font-size:1.05rem; margin:0; color:#204b57;
+    }
+    .card p{
+      margin:0; color:#444; font-size:.95rem; line-height:1.6;
+    }
+    .tags{ display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.2rem;}
+    .tag{
+      font-size:.78rem; padding:.2rem .5rem; border-radius:999px;
+      background:#eef6f8; color:#317a88;
+    }
+
+    .btn{
+      display:inline-block; text-align:center; text-decoration:none;
+      font-weight:700; padding:.78rem 1rem; border-radius:999px;
+      background:var(--brand); color:#fff; margin-top:.6rem;
+      transition:transform .04s ease, background .2s ease;
+    }
+    .btn:hover{ background:#2192a6; }
+    .btn:active{ transform:translateY(1px); }
+
+    .btn--ghost{
+      background:#ececec; color:#333;
+    }
+    .btn--ghost:hover{ background:#dcdcdc; }
+
+    footer{
+      text-align:center; color:var(--muted); font-size:.9rem; margin-top:2rem;
+    }
+    .copy{ margin-top:.4rem; font-size:.85rem; letter-spacing:.04em; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>健康セルフチェック</h1>
+      <p>気になる症状に合わせて、簡単な質問に答えるだけで受診の目安を確認できます。</p>
+    </header>
+
+    <section class="grid">
+      <!-- 腎・尿路結石 -->
+      <article class="card">
+        <h2>腎・尿路結石セルフチェック</h2>
+        <div class="tags">
+          <span class="tag">泌尿器科</span>
+          <span class="tag">所要時間：約30秒</span>
+        </div>
+        <p>チェック項目に〇をつけて判定ボタンを押すと、受診の目安を表示します。</p>
+        <a class="btn" href="./stone/index.html">チェックをはじめる</a>
+      </article>
+
+      <!-- 追加予定の枠（例） -->
+      <article class="card">
+        <h2>脳卒中リスクセルフチェック</h2>
+        <div class="tags">
+          <span class="tag">脳神経外科</span>
+          <span class="tag">準備中</span>
+        </div>
+        <p>高血圧や生活習慣などのリスク要因から受診の目安をお伝えします。</p>
+        <a class="btn btn--ghost" href="#" aria-disabled="true" onclick="return false;">近日公開</a>
+      </article>
+
+      <article class="card">
+        <h2>心血管リスクセルフチェック</h2>
+        <div class="tags">
+          <span class="tag">循環器内科</span>
+          <span class="tag">準備中</span>
+        </div>
+        <p>胸部症状や既往歴から、受診のタイミングの参考に。</p>
+        <a class="btn btn--ghost" href="#" aria-disabled="true" onclick="return false;">近日公開</a>
+      </article>
+    </section>
+
+    <footer>
+      <div>明理会東京大和病院</div>
+      <div class="copy">© Meirikai Tokyo Yamato Hospital</div>
+    </footer>
+  </div>
+</body>
+</html>
