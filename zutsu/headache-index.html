@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>頭痛症状 セルフチェック</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      background: #f7f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background: #fff;
+      max-width: 720px;
+      margin: 3em auto 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 2.2em 2.2em 1.2em 2.2em;
+    }
+    h1 {
+      font-size: 1.45em;
+      color: #205a6a;
+      margin-bottom: 1em;
+      text-align: center;
+      letter-spacing: 0.05em;
+      font-weight: bold;
+    }
+    .intro {
+      font-size: 1em;
+      color: #444;
+      margin: 0 2.2em;
+      text-align: left;
+    }
+    .question {
+      margin: 1.65em 0;
+    }
+    .question label {
+      display: flex;
+      align-items: center;
+    }
+    .question input[type="checkbox"] {
+      flex: 0 0 1.7em;
+      margin: 0 1em 0 0;
+      accent-color: #30b2c7;
+      transform: scale(1.22);
+    }
+    .question span {
+      flex: 1 1 auto;
+      font-size: 1.16em;
+      font-weight: bold;
+      color: #242e34;
+      line-height: 1.6;
+      display: inline-block;
+    }
+
+    .long-question label { align-items: baseline !important; }
+    .long-question input[type="checkbox"] {
+      margin-top: 0 !important;
+      margin-bottom: 0;
+    }
+    .hospital-name {
+      text-align: center;
+      color: #6a7a86;
+      font-size: 1.1em;
+      margin-top: 1.4em;
+      margin-bottom: 0.3em;
+      letter-spacing: 0.06em;
+      font-weight: bold;
+    }
+
+    .btns {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 2.5em;
+    }
+    button {
+      padding: 0.78em 2.2em;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 1.7em;
+      background: #30b2c7;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(48,178,199,0.10);
+      transition: background 0.2s;
+      letter-spacing: 0.06em;
+    }
+    button:hover { background: #2192a6; }
+    .reset-btn { background: #ececec; color: #444; }
+    .reset-btn:hover { background: #d2d2d2; color: #1d1d1d; }
+    .note {
+      color: #8fa9b8;
+      font-size: 1.05em;
+      margin-top: 1.5em;
+      text-align: center;
+      line-height: 1.7;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        max-width: 88vw;
+        padding: 1.2em 0.5em 1em 0.5em;
+        border-radius: 10px;
+      }
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 0.8em;
+      }
+      .intro {
+        font-size: 0.99em;
+        text-align: left;
+        margin: 0 0.4em;
+        padding: 0 0.6em;
+      }
+      .question { margin: 1em 0; margin-left: 0.8em; margin-right: 0.8em; }
+      .question label { align-items: flex-start !important; }
+      .question input[type="checkbox"] {
+        margin-top: 0.6em !important;
+        margin-bottom: 0;
+        margin-right: 1em;
+        flex: 0 0 1.35em;
+        width: 1.35em;
+        height: 1.35em;
+        transform: scale(1.09);
+      }
+      .question span {
+        font-size: 1.05em;
+        font-weight: bold;
+        line-height: 1.55;
+        word-break: break-word;
+      }
+      .btns { flex-direction: column; gap: 0.7em; margin-top: 2em; }
+      button, .reset-btn {
+        width: 100%;
+        font-size: 1.08em;
+        padding: 1.15em 0;
+        border-radius: 999px;
+      }
+      .note { text-align: left; }
+      .note, .hospital-name {
+        font-size: 0.99em;
+        padding-bottom: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>頭痛症状<br>セルフチェック</h1>
+    <div class="intro">
+      頭痛には放置すると危険な頭痛があります。<br>
+      慢性的に頭痛が続くと、生活の質が低下します。市販薬に頼るだけでなく、<strong>早めの受診</strong>をご検討ください。
+    </div>
+    <form id="selfcheck" onsubmit="event.preventDefault();">
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>頭痛が週に1回以上起こる</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>頭痛が数時間から数日間、持続することがある</span>
+      </label></div>
+
+      <div class="question long-question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>いったん頭痛が起こると仕事や家事に支障が起こる</span>
+      </label></div>
+
+      <div class="question long-question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>頭痛に対して市販の痛み止めを飲んでいるが、あまり効果がない</span>
+      </label></div>
+
+      <div class="question long-question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>頭痛が起こる前に視野にチカチカした光やギザギザした光が見えたり、視野が欠けたりするなど、視界に関する異常がある</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>頭痛が起こると光や音に敏感になる</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>目の奥が痛い</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>頭痛に吐き気や嘔吐を伴うことがある</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>脈打つような（拍動性の）頭痛がある</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>締め付けられるような頭痛がある</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>肩こりや首の痛みに悩まされている</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>デスクワークやパソコン作業が多い</span>
+      </label></div>
+
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>月経の周期に関連して頭痛が起こる</span>
+      </label></div>
+
+      <div class="btns">
+        <button type="button" onclick="judge()">判定する</button>
+        <button type="button" class="reset-btn" onclick="resetForm()">やり直し</button>
+      </div>
+    </form>
+    <div class="note">
+      ※該当するものがあればチェックを入れてください。<br>
+      判定ボタンを押すと、結果ページに移動します。
+    </div>
+    <footer class="hospital-name">IMSグループ 明理会東京大和病院</footer>
+  </div>
+  <script>
+    function judge() {
+      const checked = document.querySelectorAll('input[name="q"]:checked').length;
+      window.location.href = `headache-result.html?score=${checked}`;
+    }
+    function resetForm() {
+      document.querySelectorAll('input[name="q"]').forEach(e => { e.checked = false; });
+    }
+  </script>
+</body>
+</html>

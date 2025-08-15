@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>セルフチェック結果 | 腎・尿路結石</title>
+  <title>セルフチェック結果 | 頭痛症状</title>
   <style>
     body{
       font-family:'Segoe UI','Yu Gothic','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
@@ -124,10 +124,10 @@
     <!-- score>=1 で診療科導線を表示 -->
     <div id="deptBox" style="display:none;">
       <div class="dept-label" id="deptTitle">当院での該当診療科</div> 
-      <a id="deptLink" class="dept-btn" href="#" target="_blank" rel="noopener">泌尿器科ページへ</a>
+      <a id="deptLink" class="dept-btn" href="#" target="_blank" rel="noopener">頭痛外来ページへ</a>
     </div>
 
-    <button class="btn-back" onclick="location.href='index.html'">もう一度チェックする</button>
+    <button class="btn-back" onclick="location.href='headache-index.html'">もう一度チェックする</button>
 
     <div class="note">
       ※このチェックはあくまで目安です。<br>
@@ -157,8 +157,8 @@
       const deptLink = document.getElementById('deptLink');
       const deptTitle= document.getElementById('deptTitle');
 
-      const deptName = '泌尿器科';
-      const deptUrl  = 'https://tokyoyamato-hp.com/dept/normal/hinyoukika/?utm_source=selfcheck&utm_medium=web&utm_campaign=stone'; 
+      const deptName = '頭痛外来';
+      const deptUrl  = 'https://tokyoyamato-hp.com/news/56966/'; 
 
       deptBox.style.display = 'block';
       deptTitle.textContent = `当院での該当診療科：${deptName}`;
