@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>慢性腎臓病（腎臓の健康度） セルフチェック</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      background: #f7f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background: #fff;
+      max-width: 720px;
+      margin: 3em auto 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 2.2em 2.2em 1.2em 2.2em;
+    }
+    h1 {
+      font-size: 1.45em;
+      color: #205a6a;
+      margin-bottom: 1em;
+      text-align: center;
+      letter-spacing: 0.05em;
+      font-weight: bold;
+    }
+    .intro {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 2em;
+      text-align: center;
+    }
+    .question {
+      margin: 1.65em 0;
+    }
+    .question label {
+    display: flex;
+    align-items: center;  /* ← ここを「center」に戻すのがコツ！ */
+    }
+    .question input[type="checkbox"] {
+    flex: 0 0 1.7em;
+    margin: 0 1em 0 0;   /* 上下左右しっかり0に */
+    accent-color: #30b2c7;
+    transform: scale(1.22);
+    }
+    .question span {
+    flex: 1 1 auto;
+    font-size: 1.16em;
+    font-weight: bold;
+    color: #242e34;
+    line-height: 1.6;      /* 標準的な行間 */
+    display: inline-block;
+    }
+
+    .long-question label {
+        align-items: baseline !important; /* ← 上端で揃える */
+    }
+    .long-question input[type="checkbox"] {
+        margin-top: 0 !important;   /* ← 完全に上端にくっつける */
+        margin-bottom: 0;
+    }
+    .hospital-name {
+        text-align: center;
+        color: #6a7a86;
+        font-size: 1.1em;
+        margin-top: 1.4em;
+        margin-bottom: 0.3em;
+        letter-spacing: 0.06em;
+        font-weight: bold;
+    }
+
+
+    .btns {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 2.5em;
+    }
+    button {
+      padding: 0.78em 2.2em;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 1.7em;
+      background: #30b2c7;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(48,178,199,0.10);
+      transition: background 0.2s;
+      letter-spacing: 0.06em;
+    }
+    button:hover {
+      background: #2192a6;
+    }
+    .reset-btn {
+      background: #ececec;
+      color: #444;
+    }
+    .reset-btn:hover {
+      background: #d2d2d2;
+      color: #1d1d1d;
+    }
+    .note {
+      color: #8fa9b8;
+      font-size: 1.05em;
+      margin-top: 1.5em;
+      text-align: center;   /* 中央寄せ */
+      line-height: 1.7;   /* ←やや広めに */
+      padding-left: 1em; /* ←左右にわずかに余白追加でもOK */
+      padding-right: 1em;
+    }
+
+    @media (max-width: 600px) {
+    .container {
+      max-width: 88vw;
+      padding: 1.2em 0.5em 1em 0.5em;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 0.8em;
+    }
+    .intro {
+      font-size: 0.99em;
+      text-align: left;
+      margin-bottom: 1.5em;
+      padding: 0 1.3em;
+    }
+    .question {
+      margin: 1em 0;
+      margin-left: 0.8em;
+      margin-right: 0.8em;
+    }
+    .question label {
+      align-items: flex-start !important;  /* ←スマホだけ上揃え */
+    }
+    .question input[type="checkbox"] {
+      margin-top: var(--chk-top, 0.4em) !important; 
+      margin-bottom: 0;
+      margin-right: 1em;
+      flex: 0 0 1.35em;
+      width: 1.35em;
+      height: 1.35em;
+      transform: scale(1.09);     
+    }
+    /* （あれば）長文項目用も可変にできます */
+    .long-question input[type="checkbox"] {
+      margin-top: var(--chk-top-long, var(--chk-top, 0.4em)) !important;
+    }
+
+    .question span {
+      font-size: 1.05em;
+      font-weight: bold;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+    .btns {
+      flex-direction: column;
+      gap: 0.7em;
+      margin-top: 2em;
+    }
+    button, .reset-btn {
+      width: 100%;
+      font-size: 1.08em;
+      padding: 1.15em 0;
+      border-radius: 999px;
+    }
+    .note {
+      text-align: left;
+    }
+    .note, .hospital-name {
+      font-size: 0.99em;
+      padding-bottom: 0.5em;
+    }
+  }
+
+
+  </style>
+</head>
+<body data-title="慢性腎臓病 セルフチェック"
+  data-result="result.html"
+  data-threshold="3"
+  data-dept-name="腎臓内科"
+  data-dept-url="https://tokyoyamato-hp.com/dept/normal/jinzounaika/"
+  data-dept-min="3"
+  data-messages='[
+    {"min":0,"max":2,"text":"慢性腎臓病の可能性は低いです。"},
+    {"min":3,"text":"3個以上は要注意です。一度受診してみてもいいかもしれません。"}
+  ]'
+  style="--chk-top:0.45em">
+  <div class="container">
+    <h1>慢性腎臓病（腎臓の健康度）<br>セルフチェック</h1>
+    <div class="intro">腎臓病は、自覚症状がほとんどない病気です。<br>簡易的な質問にお答えいただくと、受診した方が良いかの目安になります。</div>
+    <form id="selfcheck" onsubmit="event.preventDefault();">
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>65歳以上である</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>近親者に腎臓の悪い人がいる</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>糖尿病や高血圧症がある</span>
+      </label></div>
+      <div class="question long-question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>何年も健診（採血・採尿）を受けていない</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>タバコを吸う</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>尿が泡立ち、なかなか消えない</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>いつも尿の色が濃いと思う</span>
+      </label></div>
+      <div class="question long-question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>腎臓が「悪い」と言われたことがある</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>飲水量は少ないほうだ</span>
+      </label></div>
+      <div class="question"><label>
+        <input type="checkbox" name="q" value="1">
+        <span>太っているほうだ</span>
+      </label></div>
+
+  <div class="btns">
+        <button type="button" data-action="judge">判定する</button>
+        <button type="button" class="reset-btn" data-action="reset">やり直し</button>
+      </div>
+    </form>
+    <div class="note">
+      ※該当するものがあればチェックを入れてください。<br>
+      判定ボタンを押すと、結果ページに移動します。
+    </div>
+    <footer class="hospital-name">明理会東京大和病院</footer>
+
+  </div>
+  
+  <script src="assets/selfcheck.js"></script>
+</body>
+</html>

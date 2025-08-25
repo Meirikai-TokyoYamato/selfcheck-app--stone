@@ -138,7 +138,7 @@
       align-items: flex-start !important;  /* ←スマホだけ上揃え */
     }
     .question input[type="checkbox"] {
-      margin-top: 0.6em !important;       
+      margin-top: var(--chk-top, 0.4em) !important;       
       margin-bottom: 0;
       margin-right: 1em;
       flex: 0 0 1.35em;
@@ -176,13 +176,10 @@
 
   </style>
 </head>
-<body>
+<body data-title="腎・尿路結石 セルフチェック" data-result="result.html" data-threshold="1" data-dept-name="泌尿器科" data-dept-url="https://tokyoyamato-hp.com/dept/normal/hinyoukika/" data-dept-min="1" data-messages='[{"min": 0, "max": 0, "text": "今のところ大きな問題はなさそうです。気になる症状があればご相談ください。"}, {"min": 1, "text": "1個でも当てはまる方は要注意です。一度病院に受診してみてもいいかもしれません。"}]' style="--chk-top:0.40em">
   <div class="container">
     <h1>腎・尿路結石<br>セルフチェック</h1>
-    <div class="intro">
-      尿路とよばれる腎臓から尿道までの尿の通り道にできる結石のことをいいます。<br>
-      簡易的な質問にお答えいただくと、病院に受診した方が良いかの目安に役立ちます。
-    </div>
+    <div class="intro">尿路とよばれる腎臓から尿道までの尿の通り道にできる結石のことをいいます。<br>簡易的な質問にお答えいただくと、病院に受診した方が良いかの目安に役立ちます。</div>
     <form id="selfcheck" onsubmit="event.preventDefault();">
       <div class="question">
         <label>
@@ -221,8 +218,8 @@
         </label>
       </div>
       <div class="btns">
-        <button type="button" onclick="judge()">判定する</button>
-        <button type="button" class="reset-btn" onclick="resetForm()">やり直し</button>
+        <button type="button" data-action="judge">判定する</button>
+        <button type="button" class="reset-btn" data-action="reset">やり直し</button>
       </div>
     </form>
     <div class="note">
@@ -232,15 +229,7 @@
     <footer class="hospital-name">IMSグループ 明理会東京大和病院</footer>
 
   </div>
-  <script>
-    function judge() {
-      const checked = document.querySelectorAll('input[name="q"]:checked').length;
-      // チェック数をresult.htmlにパラメータで渡して遷移
-      window.location.href = `result.html?score=${checked}`;
-    }
-    function resetForm() {
-      document.querySelectorAll('input[name="q"]').forEach(e => { e.checked = false; });
-    }
-  </script>
+  
+  <script src="assets/selfcheck.js"></script>
 </body>
 </html>

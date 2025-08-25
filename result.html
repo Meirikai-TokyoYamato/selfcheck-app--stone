@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セルフチェック結果</title>
+  <link rel="stylesheet" href="assets/selfcheck-result.css">
+</head>
+<body>
+  <div class="container">
+    <h1 data-bind="title">セルフチェック結果</h1>
+    <div class="score-badge" id="scoreBadge" aria-live="polite"></div>
+    <div class="result" id="result"></div>
+    <div id="deptBox" style="display:none;">
+      <div class="dept-label" id="deptTitle">当院での該当診療科</div>
+      <a id="deptLink" class="btn dept-btn" href="#" target="_blank" rel="noopener">診療科ページへ</a>
+    </div>
+    <button class="btn-back" onclick="history.back()">もう一度チェックする</button>
+    <div class="note">
+      ※このチェックはあくまで目安です。<br>
+      強い症状・長引く症状・急な悪化などがある場合は、速やかに医療機関へご相談ください。
+    </div>
+    <footer class="hospital-name">© Meirikai Tokyo Yamato Hospital</footer>
+  </div>
+  <script src="assets/selfcheck.js"></script>
+</body>
+</html>
