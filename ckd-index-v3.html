@@ -80,7 +80,7 @@
       margin-top: 2.5em;
     }
     button {
-      padding: 0.78em 2.2em;
+      padding: 0.78em 5em;
       font-size: 1.1em;
       border: none;
       border-radius: 1.7em;
@@ -103,16 +103,66 @@
       background: #d2d2d2;
       color: #1d1d1d;
     }
-    .note {
-      color: #8fa9b8;
-      font-size: 1.05em;
-      margin-top: 1.5em;
-      text-align: center;   /* 中央寄せ */
-      line-height: 1.7;   /* ←やや広めに */
-      padding-left: 1em; /* ←左右にわずかに余白追加でもOK */
-      padding-right: 1em;
+    
+    .note { 
+      color:#8fa9b8; 
+      font-size:1.05em; 
+      margin-top:1.5em; 
+      text-align:center; 
+      line-height:1.7; 
+      padding:0.5em 1.02em; 
     }
+    /* 一覧に戻るボタン：アウトライン＆四角 */
+.back-list-btn,
+.back-home{
+  display:inline-block;
+  text-decoration:none;
+  text-align:center;
+  font-weight:800;
+  /* 角丸を小さく（四角寄り） */
+  border-radius:8px;
 
+  /* アウトライン化（やり直しと差別化） */
+  background:#fff;               /* 白地 */
+  color:#205a6a;                 /* 文字は濃いブルー系 */
+  border:2px solid #9bbdca;      /* 薄青の枠線 */
+
+  padding:.85em 1.6em;
+  transition:background .2s, color .2s, border-color .2s, box-shadow .2s;
+  box-shadow:0 1px 4px rgba(0,0,0,.04);
+}
+.back-list-btn:hover,
+.back-home:hover{
+  background:#f5fafb;            /* うっすら水色 */
+  border-color:#5da5ba;          /* 枠を少し濃く */
+  color:#1b4856;
+}
+.back-list-btn:focus-visible,
+.back-home:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(48,178,199,.25);  /* フォーカスリング */
+}
+
+/* PC幅をそろえたい場合（任意） */
+@media (min-width:601px){
+  .back-list-btn,
+  .back-home{
+    display:block;
+    width:320px;           /* 他ボタンと同幅にしたいなら維持 */
+    margin:.9em auto 0;
+    box-sizing:border-box;
+  }
+}
+/* スマホはフル幅 */
+@media (max-width:600px){
+  .back-list-btn,
+  .back-home{
+    display:block;
+    width:auto;
+  }
+}
+
+    
     @media (max-width: 600px) {
     .container {
       max-width: 88vw;
@@ -169,12 +219,15 @@
       border-radius: 999px;
     }
     .note {
+      font-size:.99em; 
+      padding-bottom:.5em;
+      margin-bottom: 1em;
       text-align: left;
     }
-    .note, .hospital-name {
-      font-size: 0.99em;
-      padding-bottom: 0.5em;
-    }
+    .hospital-name { 
+      font-size:.99em; 
+      padding-bottom:.5em; 
+    }    
   }
 
 
@@ -244,6 +297,9 @@
     <div class="note">
       ※該当するものがあればチェックを入れてください。<br>
       判定ボタンを押すと、結果ページに移動します。
+    </div>
+    <div class="back-home-wrap">
+    <a class="back-home" href="index.html">健康セルフチェック一覧に戻る</a>
     </div>
     <footer class="hospital-name">明理会東京大和病院</footer>
 
