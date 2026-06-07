@@ -21,6 +21,20 @@
     return null;
   }
 
+  function isScoreInRange(score, item){
+    if(!item) return false;
+    if(typeof item.min === 'number' || typeof item.max === 'number'){
+      const min = typeof item.min === 'number' ? item.min : -Infinity;
+      const max = typeof item.max === 'number' ? item.max : Infinity;
+      return score >= min && score <= max;
+    }
+    const nums = String(item.range || '').match(/\d+/g);
+    if(!nums || !nums.length) return false;
+    const min = parseInt(nums[0], 10);
+    const max = parseInt(nums[1] || nums[0], 10);
+    return score >= min && score <= max;
+  }
+
   function initIndex(){
     // 既存の「チェックボックス個数カウント」ページ向け（IBS/膀胱炎/結石/頭痛/CKD）
     const form = $('#selfcheck');
@@ -113,6 +127,10 @@
             range.textContent = item.range;
             label.textContent = item.label;
             li.append(range, label);
+            if(isScoreInRange(score, item)){
+              li.classList.add('is-active');
+              li.setAttribute('aria-current', 'true');
+            }
             list.appendChild(li);
           });
           if(list.children.length) box.style.display = 'block';
