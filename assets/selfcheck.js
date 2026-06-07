@@ -14,6 +14,13 @@
     return null;
   }
 
+  function parseJsonParam(value){
+    if(!value) return null;
+    try { return JSON.parse(value); } catch(e){}
+    try { return JSON.parse(decodeURIComponent(value)); } catch(e){}
+    return null;
+  }
+
   function initIndex(){
     // 既存の「チェックボックス個数カウント」ページ向け（IBS/膀胱炎/結石/頭痛/CKD）
     const form = $('#selfcheck');
@@ -64,6 +71,7 @@
     const deptUrl   = p.get('deptUrl') || '';
     const deptMin   = parseInt(p.get('deptMin') || String(threshold), 10);
     const msgsParam = p.get('msgs');
+    const scaleParam = p.get('scale');
 
     // ★NEW：バッジ表記と単位（例：badge=合計点数, unit=点）
     const unit       = p.get('unit')  || '個';
@@ -76,10 +84,10 @@
 
     let messageText = null;
     if(msgsParam){
-      try {
-        const rules = JSON.parse(decodeURIComponent(msgsParam));
+      const rules = parseJsonParam(msgsParam);
+      if(rules){
         messageText = pickMessage(score, rules);
-      } catch(e){}
+      }
     }
     if(!messageText){
       messageText = (score >= threshold)
@@ -89,6 +97,28 @@
         : '今のところ大きな問題はなさそうです。気になる症状があればご相談ください。';
     }
     resultEl.textContent = messageText;
+
+    if(scaleParam){
+      const scale = parseJsonParam(scaleParam);
+      if(scale){
+        const box = $('#scaleBox');
+        const list = $('#scaleList');
+        if(box && list && Array.isArray(scale) && scale.length){
+          list.innerHTML = '';
+          scale.forEach(item => {
+            if(!item || !item.range || !item.label) return;
+            const li = document.createElement('li');
+            const range = document.createElement('span');
+            const label = document.createElement('strong');
+            range.textContent = item.range;
+            label.textContent = item.label;
+            li.append(range, label);
+            list.appendChild(li);
+          });
+          if(list.children.length) box.style.display = 'block';
+        }
+      }
+    }
 
     if(deptName && score >= deptMin){
       const box = $('#deptBox'), link = $('#deptLink'), titleEl = $('#deptTitle');
