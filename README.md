@@ -10,6 +10,13 @@
 - 膀胱炎
 - 過活動膀胱（OABSS）
 - 過敏性腸症候群（IBS）
+- 鼠径ヘルニア
+- 帯状疱疹
+- 子宮筋腫
+- 子宮内膜症
+- 更年期障害（女性）
+- 前立腺炎
+- 前立腺がん
 
 診断を行うものではなく、医療機関へ相談・受診する目安を案内するためのものです。HTML、CSS、JavaScript、JSONだけで動作し、GitHub Pagesからそのまま公開できます。ビルド処理、フレームワーク、外部JavaScriptライブラリは使用していません。
 
@@ -25,6 +32,13 @@
 ├── boukouen-index.html           # 膀胱炎（既存URL維持）
 ├── oabss-women-table.html        # OABSS（既存URL維持）
 ├── ibs-index.html                # IBS（既存URL維持）
+├── inguinal-hernia-index.html    # 鼠径ヘルニア
+├── shingles-index.html           # 帯状疱疹
+├── uterine-fibroids-index.html   # 子宮筋腫
+├── endometriosis-index.html      # 子宮内膜症
+├── menopause-women-index.html    # 更年期障害（女性）
+├── prostatitis-index.html        # 前立腺炎
+├── prostate-cancer-index.html    # 前立腺がん
 └── assets/
     ├── css/
     │   ├── home.css              # 一覧ページ

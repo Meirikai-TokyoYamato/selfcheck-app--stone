@@ -1,3 +1,5 @@
 # Codex working files
 /work/
 /outputs/
+# Excel設計資料
+*.xlsx
