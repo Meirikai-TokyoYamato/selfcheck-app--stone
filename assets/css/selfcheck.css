@@ -1,0 +1,115 @@
+:root {
+  --c-bg: #f7f9fa;
+  --c-card: #fff;
+  --c-text: #242e34;
+  --c-muted: #8fa9b8;
+  --c-heading: #205a6a;
+  --c-accent: #30b2c7;
+  --c-accent-dark: #2192a6;
+  --c-line: #cfdbe3;
+  --chk-top: .46em;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  margin: 0;
+}
+.container {
+  background: var(--c-card);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .08);
+  margin: 3em auto 0;
+  max-width: 720px;
+  padding: 2.2em 2.2em 1.2em;
+}
+h1 {
+  color: var(--c-heading);
+  font-size: 1.45em;
+  font-weight: 700;
+  letter-spacing: .05em;
+  line-height: 1.45;
+  margin: 0 0 1em;
+  text-align: center;
+}
+.intro { color: #444; line-height: 1.7; margin-bottom: 2em; text-align: center; }
+.pc-br { display: none; }
+.question { margin: 1.65em 0; }
+.question label { align-items: center; cursor: pointer; display: flex; }
+.question input[type='checkbox'] {
+  accent-color: var(--c-accent);
+  flex: 0 0 1.7em;
+  margin: 0 1em 0 0;
+  transform: scale(1.22);
+}
+.question span { flex: 1; font-size: 1.16em; font-weight: 700; line-height: 1.6; }
+.btns { display: flex; gap: 1em; justify-content: center; margin-top: 2.5em; }
+button {
+  background: var(--c-accent);
+  border: 0;
+  border-radius: 1.7em;
+  box-shadow: 0 2px 8px rgba(48, 178, 199, .1);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: .78em 5em;
+}
+button:hover { background: var(--c-accent-dark); }
+.reset-btn { background: #ececec; color: #444; }
+.reset-btn:hover { background: #d2d2d2; color: #1d1d1d; }
+.note { color: var(--c-muted); font-size: 1.05em; line-height: 1.7; margin-top: 1.5em; padding: .5em 1.02em; text-align: center; }
+.back-home {
+  background: #fff;
+  border: 2px solid #9bbdca;
+  border-radius: 8px;
+  color: var(--c-heading);
+  display: block;
+  font-weight: 800;
+  margin: .9em auto 0;
+  padding: .85em 1.6em;
+  text-align: center;
+  text-decoration: none;
+  width: 320px;
+}
+.back-home:hover { background: #f5fafb; border-color: #5da5ba; color: #1b4856; }
+.back-home:focus-visible { box-shadow: 0 0 0 3px rgba(48, 178, 199, .25); outline: 0; }
+.hospital-name { color: #6a7a86; font-size: 1.1em; font-weight: 700; letter-spacing: .06em; margin: 1.4em 0 .3em; text-align: center; }
+
+/* OABSS table */
+.container--wide { max-width: 980px; padding: 2em; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; min-width: 760px; width: 100%; }
+th, td { border: 1px solid var(--c-line); padding: .75em .7em; vertical-align: middle; }
+thead th { background: #f7fbfd; color: var(--c-heading); font-weight: 700; text-align: center; }
+.col-num { text-align: center; width: 5%; }
+.col-state { width: 45%; }
+.col-score { text-align: center; width: 15%; }
+.col-freq { width: 35%; }
+.numcell { color: #2a3a42; font-size: 1.15em; font-weight: 700; }
+.qtext { line-height: 1.6; }
+.scorecell label { align-items: center; cursor: pointer; display: inline-flex; gap: .45em; }
+.scorecell input { accent-color: var(--c-accent); transform: scale(1.05); }
+.scorebadge { color: var(--c-heading); display: inline-block; font-weight: 700; min-width: 1.6em; text-align: center; }
+.freq { color: #516b78; white-space: nowrap; }
+
+@media (min-width: 601px) { .pc-br { display: inline; } }
+@media (max-width: 600px) {
+  .container, .container--wide { border-radius: 10px; margin-top: 1.2em; max-width: 94vw; padding: 1.2em .8em 1em; }
+  h1 { font-size: 1.5em; margin-bottom: .8em; }
+  .intro { font-size: .99em; margin-bottom: 1.5em; padding: 0 .5em; text-align: left; }
+  .question { margin: 1em .8em; }
+  .question label { align-items: flex-start; }
+  .question input[type='checkbox'] { flex: 0 0 1.35em; height: 1.35em; margin: var(--chk-top) 1em 0 0; transform: scale(1.09); width: 1.35em; }
+  .question span { font-size: 1.05em; line-height: 1.55; word-break: break-word; }
+  .btns { flex-direction: column; gap: .7em; margin-top: 2em; }
+  button { border-radius: 999px; font-size: 1.08em; padding: 1.15em 0; width: 100%; }
+  .note { font-size: .99em; margin-bottom: 1em; text-align: left; }
+  .back-home { width: 100%; }
+  .hospital-name { font-size: .99em; padding-bottom: .5em; }
+  th, td { padding: .65em .55em; }
+}
+
